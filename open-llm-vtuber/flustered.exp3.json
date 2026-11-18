@@ -1,0 +1,8 @@
+{
+  "Type": "Live2D Expression",
+  "Parameters": [
+    { "Id": "ParamShy", "Value": 30, "Blend": "Add" },
+    { "Id": "ParamAse", "Value": 30, "Blend": "Add" },
+    { "Id": "ParamAse2", "Value": 30, "Blend": "Add" }
+  ]
+}

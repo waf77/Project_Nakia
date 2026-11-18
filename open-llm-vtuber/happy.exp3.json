@@ -1,0 +1,8 @@
+{
+  "Type": "Live2D Expression",
+  "Parameters": [
+    { "Id": "ParamMouthForm", "Value": 1, "Blend": "Overwrite" },
+    { "Id": "ParamKira", "Value": 30, "Blend": "Add" },
+    { "Id": "ParamKira2", "Value": 30, "Blend": "Add" }
+  ]
+}

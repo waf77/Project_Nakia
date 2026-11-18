@@ -1,0 +1,34 @@
+{
+  "Version": 3,
+  "FileReferences": {
+    "Moc": "hailunna_4.moc3",
+    "Textures": [
+      "textures/texture_00.png"
+    ],
+    "Physics": "hailunna_4.physics3.json",
+    "DisplayInfo": "hailunna_4.cdi3.json",
+    "Expressions": [
+      { "Name": "neutral", "File": "expressions/neutral.exp3.json" },
+      { "Name": "blush", "File": "expressions/blush.exp3.json" },
+      { "Name": "happy", "File": "expressions/happy.exp3.json" },
+      { "Name": "angry", "File": "expressions/angry.exp3.json" }
+    ]
+  },
+  "Groups": [
+    {
+      "Target": "Parameter",
+      "Name": "EyeBlink",
+      "Ids": [
+        "ParamEyeLOpen",
+        "ParamEyeROpen"
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Name": "LipSync",
+      "Ids": [
+        "ParamMouthOpenY"
+      ]
+    }
+  ]
+}

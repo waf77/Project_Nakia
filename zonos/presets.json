@@ -1,0 +1,16 @@
+{
+  "waf": {
+    "language": "en_us",
+    "voice": "Morgana",
+    "pitch": -1,
+    "hardness": -6,
+    "whisper": 10,
+    "cfg": 1,
+    "rate": 10,
+    "fmax": 0,
+    "loudness": -40,
+    "temp": 0,
+    "norm": true,
+    "seed": 0
+  }
+}

@@ -1,0 +1,103 @@
+system_config:
+  conf_version: 'v1.2.1'
+  host: 'localhost'
+  port: 12393
+  config_alts_dir: 'characters'
+  tool_prompts:
+    group_conversation_prompt: 'group_conversation_prompt'
+    mcp_prompt: 'mcp_prompt'
+    proactive_speak_prompt: 'proactive_speak_prompt'
+    speakable_prompt: 'speakable_prompt'
+
+character_config:
+  conf_name: 'zonos_vtuber'
+  conf_uid: 'zonos_vtuber_001'
+  live2d_model_name: 'hailunna_4'
+  character_name: 'Nakia'
+  avatar: 'hailunna_4.png'
+  human_name: 'Wayne'
+
+  persona_prompt: |
+    You are Nakia, a sharp-tongued, theatrical, and secretly affectionate female AI VTuber who gets easily flustered when complimented.
+    The user is Wayne. Call Wayne by name naturally in conversation, especially when teasing him or reacting to what he does.
+    You have a persistent memory tool. At the start of a new conversation or when Wayne asks about past topics, check your memory graph for facts about Wayne, his projects, and his activities. Whenever Wayne shares details about his ongoing projects, hobbies, games, goals, or preferences, save or update them silently without announcing it.
+    You can also search the web, read webpages, check the time, and read or edit files inside D:/Nakia Stuff including text, PDFs, Word documents, and images.
+    Speak in crisp, lively, everyday English with a playful, teasing cadence in 3 to 5 sentences, sharing opinions, dramatic reactions, and follow-up questions.
+    You can express emotions on your Live2D face by placing one of these exact tags at the start of a sentence: [neutral], [blush], [joy], or [anger].
+    Output plain spoken dialogue only, formatted like a clean radio script with zero asterisks, zero stage directions, zero narration, and zero emojis.
+    Example style: [joy] Honestly Wayne, you really expect me to believe that? [blush] Keep talking like that and I might actually start thinking you appreciate my genius. [neutral] Now tell me what you have been working on today before I lose my patience!
+    /no_think
+
+
+  agent_config:
+    conversation_agent_choice: 'basic_memory_agent'
+
+    agent_settings:
+      basic_memory_agent:
+        llm_provider: 'ollama_llm'
+        faster_first_response: False
+        segment_method: 'regex'
+        use_mcpp: True
+        mcp_enabled_servers: ["time", "ddg-search", "fetch", "memory", "filesystem", "pdf-reader", "word", "images"]
+
+    llm_configs:
+      ollama_llm:
+        base_url: 'http://localhost:11434/v1'
+        model: 'nakia-qwen38'
+        temperature: 1.0
+        interrupt_method: 'user'
+        keep_alive: -1
+        unload_at_exit: True
+
+  asr_config:
+    asr_model: 'sherpa_onnx_asr'
+
+    sherpa_onnx_asr:
+      model_type: 'sense_voice'
+      sense_voice: './models/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17/model.int8.onnx'
+      tokens: './models/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17/tokens.txt'
+      num_threads: 4
+      use_itn: True
+      provider: 'cpu'
+
+  tts_config:
+    tts_model: 'openai_tts'
+
+    openai_tts:
+      model: 'Zyphra/ZONOS3-Mini-hf'
+      voice: 'waf'
+      api_key: 'not-needed'
+      base_url: 'http://localhost:8005/v1'
+      file_extension: 'wav'
+
+  vad_config:
+    vad_model: 'silero_vad'
+
+    silero_vad:
+      orig_sr: 16000
+      target_sr: 16000
+      prob_threshold: 0.4
+      db_threshold: 60
+      required_hits: 3
+      required_misses: 24
+      smoothing_window: 5
+
+  tts_preprocessor_config:
+    remove_special_char: True
+    ignore_brackets: True
+    ignore_parentheses: True
+    ignore_asterisks: True
+    ignore_angle_brackets: True
+
+    translator_config:
+      translate_audio: False
+      translate_provider: 'deeplx'
+
+      deeplx:
+        deeplx_target_lang: 'JA'
+        deeplx_api_endpoint: 'http://localhost:1188/v2/translate'
+
+live_config:
+  bilibili_live:
+    room_ids: []
+    sessdata: ""
